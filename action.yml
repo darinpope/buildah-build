@@ -1,0 +1,14 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'buildah-build'
+description: 'buildah-build'
+
+runs:
+  using: composite
+  steps:
+    - id: buildah-build
+      name: Use Buildah to build image
+      uses: docker://quay.io/buildah/stable:v1.32.2
+      shell: sh
+      run: |
+        buildah build .
